@@ -1,0 +1,4 @@
+# STM32CubeIDE
+software/.metadata/
+software/.settings/
+software/*.ld
