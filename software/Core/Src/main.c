@@ -51,11 +51,8 @@ UART_HandleTypeDef huart2;
 extern PCD_HandleTypeDef hpcd_USB_FS;
 extern USBD_HandleTypeDef hUsbDeviceFS;
 
-volatile int16_t vol_l_counter = 0;
-volatile int16_t vol_l_last_counter = 0;
-
-volatile int16_t vol_r_counter = 0;
-volatile int16_t vol_r_last_counter = 0;
+volatile uint16_t vol_l_counter = 0;
+volatile uint16_t vol_r_counter = 0;
 
 volatile Button bt_a;
 volatile Button bt_b;
@@ -95,10 +92,6 @@ static void MX_TIM3_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-//void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
-//	vol_a_raw_counter = __HAL_TIM_GET_COUNTER(htim);
-//}
-
 /* USER CODE END 0 */
 
 /**
@@ -132,6 +125,7 @@ int main(void)
   MX_USART2_UART_Init();
   MX_TIM2_Init();
   MX_TIM3_Init();
+
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
 
@@ -145,6 +139,7 @@ int main(void)
   bt_fx_l = Button_Init(DEFAULT_DEBOUNCE);
   bt_fx_r = Button_Init(DEFAULT_DEBOUNCE);
   bt_start = Button_Init(DEFAULT_DEBOUNCE);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -152,7 +147,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	__WFI();
+	  __WFI();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -172,7 +167,7 @@ void SystemClock_Config(void)
   * in the RCC_OscInitTypeDef structure.
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
-  RCC_OscInitStruct.HSEState = RCC_HSE_BYPASS;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
@@ -229,7 +224,7 @@ static void MX_TIM2_Init(void)
   htim2.Instance = TIM2;
   htim2.Init.Prescaler = 0;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 65535;
+  htim2.Init.Period = 47;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   sConfig.EncoderMode = TIM_ENCODERMODE_TI1;
@@ -278,7 +273,7 @@ static void MX_TIM3_Init(void)
   htim3.Instance = TIM3;
   htim3.Init.Prescaler = 0;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 65535;
+  htim3.Init.Period = 47;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   sConfig.EncoderMode = TIM_ENCODERMODE_TI1;
@@ -441,11 +436,11 @@ void Process_SOF_Callback() {
   HAL_GPIO_WritePin(FX_R_BT_LED_GPIO_Port, FX_R_BT_LED_Pin, !bt_fx_r_state);
   HAL_GPIO_WritePin(START_BT_LED_GPIO_Port, START_BT_LED_Pin, !bt_start_state);
 
-  vol_l_counter = (uint16_t)__HAL_TIM_GET_COUNTER(&htim2);
-  hid_report.vol_l_encoder = (uint8_t)(((uint32_t)(vol_l_counter % 48) * 255u) / 48);
+  vol_l_counter = __HAL_TIM_GET_COUNTER(&htim2);
+  hid_report.vol_l_encoder = (uint8_t)(((uint32_t)(vol_l_counter % 48u) * 255u) / 48u);
 
-  vol_r_counter = (int16_t)__HAL_TIM_GET_COUNTER(&htim3);
-  hid_report.vol_r_encoder = (uint8_t)(((uint32_t)(vol_r_counter % 48) * 255u) / 48);;
+  vol_r_counter = __HAL_TIM_GET_COUNTER(&htim3);
+  hid_report.vol_r_encoder = (uint8_t)(((uint32_t)(vol_r_counter % 48u) * 255u) / 48u);
 
   USBD_CUSTOM_HID_HandleTypeDef *hhid = (USBD_CUSTOM_HID_HandleTypeDef*)hUsbDeviceFS.pClassData;
   if (hhid->state == CUSTOM_HID_IDLE)
