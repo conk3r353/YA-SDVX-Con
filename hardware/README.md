@@ -17,53 +17,32 @@ I ordered the PCBs from JLCPCB and tailored most of the components for their ass
 
 ### Components list
 
--   STMicroelectronics STM32F303RET6
-    
--   Toshiba TBD62003AFNG,EL
-    
--   Korean Hroparts Elec TYPE-C-31-M-12 USB receptacle
-    
--   DIODES AP2112K-3.3TRG1
-    
--   STMicroelectronics USBLC6-2P6
-    
--   YXC Crystal Oscillators X32258MOB4SI
-    
--   Samsung Electro-Mechanics CL05B104KO5NNNC 100 nF capacitor ×12
-    
--   Samsung Electro-Mechanics CL10A475KO8NNNC 4.7 µF capacitor ×2
-    
--   FengHua 0402CG180J500NT 18 pF capacitor ×2
-    
--   IHHEC C1206N472J501TEF 4.7 nF capacitor
-    
--   Samsung Electro-Mechanics CL05A105KA5NQNC 1 µF capacitor ×2
-    
--   Sunlord GZ2012D601TF ferrite bead
-    
--   TUOZHAN F.1206.00029/P2-1206B1TS2-09T-201 blue LED ×4
-    
--   TUOZHAN F.1206.00003/P2-1206R1TS2-09T-001 red LED ×3
-    
--   UNI-ROYAL 0402WGF4700TCE 470 Ω resistor ×4
-    
--   UNI-ROYAL 0603WAF5600T5E 560 Ω resistor ×3
-    
--   UNI-ROYAL 0402WGF5101TCE 5.1 kΩ resistor ×2
-    
--   UNI-ROYAL 0402WGF220JTCE 22 Ω resistor ×2
-    
--   UNI-ROYAL 0402WGF1004TCE 1 MΩ resistor
-    
--   UNI-ROYAL 0402WGF1501TCE 1.5 kΩ resistor
-    
--   UNI-ROYAL 0402WGF1002TCE 10 kΩ resistor ×9
-    
--   Bourns PEC16-4020F-N0024 rotary encoder ×2
-    
--   Gateron G Pro 3.0 Red 5-pin mechanical switch ×7
-    
--   GATERON PC Crystal Stabilizer 2u ×2
+| Component | Part | Quantity |
+|---|---|---:|
+| MCU | STMicroelectronics STM32F303RET6 | 1 |
+| Darlington transistor array | Toshiba TBD62003AFNG,EL | 1 |
+| USB receptacle | Korean Hroparts Elec TYPE-C-31-M-12 | 1 |
+| Voltage regulator | Diodes AP2112K-3.3TRG1 | 1 |
+| ESD protection | STMicroelectronics USBLC6-2P6 | 1 |
+| Crystal oscillator | YXC X32258MOB4SI | 1 |
+| Capacitor, 100 nF | Samsung Electro-Mechanics CL05B104KO5NNNC | 12 |
+| Capacitor, 4.7 µF | Samsung Electro-Mechanics CL10A475KO8NNNC | 2 |
+| Capacitor, 18 pF | FengHua 0402CG180J500NT | 2 |
+| Capacitor, 4.7 nF | IHHEC C1206N472J501TEF | 1 |
+| Capacitor, 1 µF | Samsung Electro-Mechanics CL05A105KA5NQNC | 2 |
+| Ferrite bead | Sunlord GZ2012D601TF | 1 |
+| Blue LED | TUOZHAN F.1206.00029/P2-1206B1TS2-09T-201 | 4 |
+| Red LED | TUOZHAN F.1206.00003/P2-1206R1TS2-09T-001 | 3 |
+| Resistor, 470 Ω | UNI-ROYAL 0402WGF4700TCE | 4 |
+| Resistor, 560 Ω | UNI-ROYAL 0603WAF5600T5E | 3 |
+| Resistor, 5.1 kΩ | UNI-ROYAL 0402WGF5101TCE | 2 |
+| Resistor, 22 Ω | UNI-ROYAL 0402WGF220JTCE | 2 |
+| Resistor, 1 MΩ | UNI-ROYAL 0402WGF1004TCE | 1 |
+| Resistor, 1.5 kΩ | UNI-ROYAL 0402WGF1501TCE | 1 |
+| Resistor, 10 kΩ | UNI-ROYAL 0402WGF1002TCE | 9 |
+| Rotary encoder | Bourns PEC16-4020F-N0024 | 2 |
+| Mechanical switch | Gateron G Pro 3.0 Red, 5-pin | 7 |
+| Stabilizer | Gateron PC Crystal Stabilizer 2u | 2 |
     
 
 ### Notes
@@ -79,5 +58,3 @@ I ordered the PCBs from JLCPCB and tailored most of the components for their ass
 -   Bourns PEC16-4020F-N0024 encoders are surprisingly difficult and expensive to find. Even with the setup fee, it was cheaper to have JLCPCB assemble them rather than buying them separately. The PEC16-4220F-N0024 was much more readily available in my case, but it has detents, which are not desirable here. They do work, and with heavy, full-aluminum encoder caps, the detents aren't too noticeable, so they can be used as a replacement in a pinch. Electrically, they are the same, and they have the same footprint, which makes replacement as straightforward as possible.
     
 -   Any Cherry MX-compatible mechanical switch should work. However, I recommend using 5-pin switches for greater stability during placement and soldering. I would also suggest using switches with SMD LED support.
-    
--   Any 2u Cherry MX-compatible PCB-mount stabilizer should work.
