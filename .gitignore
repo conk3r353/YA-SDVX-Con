@@ -1,3 +1,6 @@
 # STM32CubeIDE
 software/.metadata
 software/.settings
+
+# Manufacturing
+manufacturing/case/*.dxf~
