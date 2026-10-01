@@ -1,5 +1,3 @@
-
-
 # Hardware
 
 This project was developed using EasyEDA Pro V3. The `.epro2` project file is provided.
@@ -21,7 +19,7 @@ I ordered the PCBs from JLCPCB and tailored most of the components for their ass
 | Component | Part | Quantity |
 |---|---|---:|
 | MCU | STMicroelectronics STM32F303RET6 | 1 |
-| Darlington transistor array | Toshiba TBD62003AFNG,EL | 1 |
+| Transistor array | Toshiba TBD62003AFNG,EL | 1 |
 | USB receptacle | Korean Hroparts Elec TYPE-C-31-M-12 | 1 |
 | Voltage regulator | Diodes AP2112K-3.3TRG1 | 1 |
 | ESD protection | STMicroelectronics USBLC6-2P6 | 1 |
