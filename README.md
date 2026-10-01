@@ -3,12 +3,15 @@
 ![Top view](assets/ya_sdvx_con_top.jpg)
 ![Bottom view](assets/ya_sdvx_con_bottom.jpg)
 
+(yeah, writing your own GitHub link on PCB silkscreen without a typo is hard, man...)
+
 ## Features
 
 -	Simple to use, produce and modify PCB based on STM32 microcontroller
 -	Compatible with any HID Gamepad supporting game
 -	Under-button LEDs reacting to each button press
 -	See-through acryllic case
+-	1 kHz polling rate
 
 ## Disclaimer
 

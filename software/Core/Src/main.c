@@ -394,22 +394,6 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-//PUTCHAR_PROTOTYPE
-//{
-//  /* Place your implementation of fputc here */
-//  /* e.g. write a character to the USART1 and Loop until the end of transmission */
-//
-////	char test = ~(ch<<1);
-//    HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, 0xFFFF);
-//
-//    return ch;
-//}
-
-int _write(int fd, char * ptr, int len) {
-  HAL_UART_Transmit(&huart2, (uint8_t *)ptr, len, HAL_MAX_DELAY);
-  return len;
-}
-
 void Process_SOF_Callback() {
   hid_report.buttons = 0x00;
 
