@@ -80,3 +80,5 @@ For any keycap length longer than 1.75u stabilizers are needed. I chose PCB moun
 -   The UNI-ROYAL 0402WGF1004TCE and IHHEC C1206N472J501TEF can technically be removed and replaced with jumpers. These components are part of the board's ESD protection, which is optional for prototypes. I would recommend keeping them if the component price isn't too high.
     
 -   The TUOZHAN F.1206.00029/P2-1206B1TS2-09T-201 blue LEDs were not available from JLCPCB at the time of ordering. Possible replacements are TUOZHAN F.1206.00002/P2-1206B1TS2-09T-001 and TUOZHAN F.1206.00017/P2-1206W6YS1-09T-001. The latter is lighter in color and closer to cyan.
+
+-	There is a 5mm * 5mm square on the bottom side of the PCB silkscreen. It is originally intended for adding serial numbers from JLCPCB. If not used and/or desired, it can freely be removed.
