@@ -71,9 +71,10 @@ volatile GPIO_PinState bt_fx_r_state = GPIO_PIN_RESET;
 volatile GPIO_PinState bt_start_state = GPIO_PIN_RESET;
 
 typedef struct __attribute__((packed)) {
+    uint8_t report_id;
+    uint16_t buttons;
     uint8_t vol_l_encoder;
     uint8_t vol_r_encoder;
-    uint8_t buttons;
 } HID_Report_t;
 
 HID_Report_t hid_report = {0};
@@ -86,7 +87,6 @@ static void MX_USART2_UART_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_TIM3_Init(void);
 /* USER CODE BEGIN PFP */
-//#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -228,7 +228,7 @@ static void MX_TIM2_Init(void)
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   sConfig.EncoderMode = TIM_ENCODERMODE_TI1;
-  sConfig.IC1Polarity = TIM_ICPOLARITY_RISING;
+  sConfig.IC1Polarity = TIM_ICPOLARITY_FALLING;
   sConfig.IC1Selection = TIM_ICSELECTION_DIRECTTI;
   sConfig.IC1Prescaler = TIM_ICPSC_DIV1;
   sConfig.IC1Filter = 0;
@@ -277,7 +277,7 @@ static void MX_TIM3_Init(void)
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   sConfig.EncoderMode = TIM_ENCODERMODE_TI1;
-  sConfig.IC1Polarity = TIM_ICPOLARITY_RISING;
+  sConfig.IC1Polarity = TIM_ICPOLARITY_FALLING;
   sConfig.IC1Selection = TIM_ICSELECTION_DIRECTTI;
   sConfig.IC1Prescaler = TIM_ICPSC_DIV1;
   sConfig.IC1Filter = 0;
@@ -395,6 +395,7 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void Process_SOF_Callback() {
+  hid_report.report_id = 0x04;
   hid_report.buttons = 0x00;
 
   bt_a_state = Update_Button(&bt_a, HAL_GPIO_ReadPin(A_BT_GPIO_Port, A_BT_Pin));
@@ -410,7 +411,7 @@ void Process_SOF_Callback() {
   bt_fx_r_state = Update_Button(&bt_fx_r, HAL_GPIO_ReadPin(FX_R_BT_GPIO_Port, FX_R_BT_Pin));
   hid_report.buttons |= ((!bt_fx_r_state) << 5);
   bt_start_state = Update_Button(&bt_start, HAL_GPIO_ReadPin(START_BT_GPIO_Port, START_BT_Pin));
-  hid_report.buttons |= ((!bt_start_state) << 6);
+  hid_report.buttons |= ((!bt_start_state) << 8);
 
   HAL_GPIO_WritePin(A_BT_LED_GPIO_Port, A_BT_LED_Pin, !bt_a_state);
   HAL_GPIO_WritePin(B_BT_LED_GPIO_Port, B_BT_LED_Pin, !bt_b_state);

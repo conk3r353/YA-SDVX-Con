@@ -8,6 +8,7 @@
 ## Features
 
 -	Simple to use, produce and modify PCB based on STM32 microcontroller
+-	e-Amusement Cloud spoofing works by default - SDVX Konasute works out of the box
 -	Compatible with any HID Gamepad supporting game
 -	Under-button LEDs reacting to each button press
 -	See-through acryllic case

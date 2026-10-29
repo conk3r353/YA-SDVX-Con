@@ -92,40 +92,39 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
 {
   /* USER CODE BEGIN 0 */
   0x05, 0x01,        // Usage Page (Generic Desktop)
-  0x09, 0x05,        // Usage (Game Pad)
+  0x09, 0x04,        // Usage (Game Pad)
   0xA1, 0x01,        // Collection (Application)
 
-  // ---------- X ----------
-  0x05, 0x01,        // Usage Page (Generic Desktop)
-  0x09, 0x30,        // Usage (X)
-  0x15, 0x00,        // Logical Minimum (0)
-  0x26, 0xFF, 0x00,  // Logical Maximum (255)
-  0x75, 0x08,        // Report Size (8)
-  0x95, 0x01,        // Report Count (1)
-  0x81, 0x02,        // Input (Data,Var,Abs)
+  0x85, 0x04,        // Report ID (4)
 
-  // ---------- Y ----------
-  0x09, 0x31,        // Usage (Y)
-  0x15, 0x00,        // Logical Minimum (0)
-  0x26, 0xFF, 0x00,  // Logical Maximum (255)
-  0x75, 0x08,        // Report Size (8)
-  0x95, 0x01,        // Report Count (1)
-  0x81, 0x02,        // Input (Data,Var,Abs)
-
-  // ---------- Buttons (7 bits) ----------
+  // ---------- 9 buttons ----------
   0x05, 0x09,        // Usage Page (Button)
   0x19, 0x01,        // Usage Minimum (Button 1)
-  0x29, 0x07,        // Usage Maximum (Button 7)
+  0x29, 0x09,        // Usage Maximum (Button 9)
   0x15, 0x00,        // Logical Minimum (0)
   0x25, 0x01,        // Logical Maximum (1)
-  0x75, 0x01,        // Report Size (1)
-  0x95, 0x07,        // Report Count (7)
-  0x81, 0x02,        // Input (Data,Var,Abs)
+  0x95, 0x09,        // Report Count (9)
+  0x75, 0x01,        // Report Size (1 bit)
+  0x81, 0x02,        // Input (Data, Variable, Absolute)
 
-  // ---------- Padding (1 bit) ----------
+  // ---------- Padding to 16 bits ----------
   0x95, 0x01,        // Report Count (1)
-  0x75, 0x01,        // Report Size (1)
-  0x81, 0x03,        // Input (Const,Var,Abs)
+  0x75, 0x07,        // Report Size (7 bits)
+  0x81, 0x03,        // Input (Constant)
+
+  // ---------- X and Y axes ----------
+  0x05, 0x01,        // Usage Page (Generic Desktop)
+  0x09, 0x01,        // Usage (Pointer)
+  0x15, 0x00,        // Logical Minimum (0)
+  0x26, 0xFF, 0x00,  // Logical Maximum (255)
+  0x95, 0x02,        // Report Count (2)
+  0x75, 0x08,        // Report Size (8 bits)
+
+  0xA1, 0x00,        // Collection (Physical)
+  0x09, 0x30,        // Usage (X)
+  0x09, 0x31,        // Usage (Y)
+  0x81, 0x02,        // Input (Data, Variable, Absolute)
+  0xC0,              // End Physical Collection
 
   /* USER CODE END 0 */
   0xC0    /*     END_COLLECTION	             */

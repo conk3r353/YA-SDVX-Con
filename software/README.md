@@ -18,6 +18,10 @@ Encoders are handled with MCU timers in encoder mode. Every SOF timer counter is
 
 There is no software debouncing for encoders since hardware debouncing is present. It is possible to add filters in CubeMX, but in my testing results were quite poor.
 
+### e-Amusement Cloud support
+
+EAC requires specific VID and PID, as well as a specific HID descriptor structure. Two extra buttons are added to support it.
+
 ## USB
 
 HID descriptor is located in [CUSTOM_HID_ReportDesc_FS](USB_DEVICE/App/usbd_custom_hid_if.c) variable.
